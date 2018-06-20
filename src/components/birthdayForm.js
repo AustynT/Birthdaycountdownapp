@@ -9,7 +9,6 @@ class BirthdayForm extends Component {
 
         this.handleChange = this.handleChange.bind(this)
         this.handleGenerate = this.handleGenerate.bind(this)
-        this.renderStuff = this.renderStuff.bind(this)
 
         this.state = {
          startDate: moment(),
