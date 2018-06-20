@@ -8,9 +8,12 @@ class BirthdayForm extends Component {
         super(props)
 
         this.handleChange = this.handleChange.bind(this)
+        this.handleGenerate = this.handleGenerate.bind(this)
+        this.renderStuff = this.renderStuff.bind(this)
 
         this.state = {
-         startDate: moment()   
+         startDate: moment(),
+         formCompleted: false
         }
     }
 
@@ -20,6 +23,13 @@ class BirthdayForm extends Component {
             startDate: date
         })
 
+    }
+
+    handleGenerate(){
+        alert('trying to generate')
+        this.setState({
+            formCompleted: true
+        })
     }
 
 
@@ -32,6 +42,7 @@ class BirthdayForm extends Component {
                 selected={this.state.startDate}
                 onChange={this.handleChange}
             />
+            <a onClick={this.handleGenerate}>Generate Count Down </a>
         </div>
         )}
 
