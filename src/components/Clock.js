@@ -6,6 +6,7 @@ class Clock extends Component{
         this.timer = 0
         this.birthday = this.props.birthdayFormState.startDate.toString();
         this.getTimeRemaining = this.getTimeRemaining.bind(this)
+        this.noBirthYear = new Date(this.birthday).getFullYear() == new Date().getFullYear()
 
         this.state = {
             timeRemaining: this.getTimeRemaining(props.birthdayFormState.startDate.toString())
@@ -83,6 +84,17 @@ class Clock extends Component{
         clearInterval(this.timer)
     }
 
+    renderMessage = function() {
+        if(this.noBirthYear){
+            return(
+                <h4>Until your Birthday!</h4>
+            )
+        }
+        return(
+            <h4>remaining until you are {this.getAge()}</h4>
+        )
+    }.bind(this)
+
 
 
     render(){
@@ -102,7 +114,7 @@ class Clock extends Component{
                          <div>SECONDS {data.seconds}</div>
                     </div>
                     <div>
-                        {<h4>remaining until you are {this.getAge()}</h4>}
+                        {this.renderMessage()}
                     </div> 
                 </div>
                 }
